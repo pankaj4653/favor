@@ -1,0 +1,17 @@
+<h2 style= "color : green"><center> Sign Up Form </center></h2>
+<form method = "post">
+	{% csrf_token %}
+	{% for field in form %}
+	<p>
+		<center><strong style = "color : blue; ">{{ field.label_tag }}</strong></center><br>
+		<center>{{ field }}</center>
+		{% if field.help_text %}
+			<center><strong style="color : grey">{{field.help_text}}</strong></center><br>
+		{% endif %}
+		{% for error in field.errors %}
+			<center><p style="color : red">{{error}}</p></center>
+		{% endfor %}
+	</p>
+	{% endfor %}
+<center><input style = "size: 40px ;" type="submit" value="Submit"></center>
+</form>
